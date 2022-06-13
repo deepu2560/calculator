@@ -8,12 +8,16 @@ function App() {
   const [operator, setoperator] = useState("");
 
   const handleInput = (n) => {
-    if (inputData.length < 8) {
+    if (inputData.length < 30) {
       setinputData((prev) => prev + n);
     }
   };
 
   const handleOperator = (op) => {
+    if (inputData == "" && num == "") {
+      return;
+    }
+
     if (num == "") {
       setnum(() => inputData);
       setinputData(() => "");
@@ -25,6 +29,10 @@ function App() {
   };
 
   const handleAdvance = (prev) => {
+    if (inputData == "" && num == "") {
+      return;
+    }
+
     let res;
     let num = +inputData;
     if (prev == "sq") {
